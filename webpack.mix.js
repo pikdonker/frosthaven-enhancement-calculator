@@ -16,3 +16,5 @@ mix.setPublicPath('./public');
 mix.js('src/js/calculatorLoader.js', 'public/js/calculator.js').react();
 
 mix.sass('src/scss/calculator.scss', 'public/css');
+
+mix.version();
