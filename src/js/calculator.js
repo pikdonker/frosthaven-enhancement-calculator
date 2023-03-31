@@ -138,7 +138,7 @@ class EnhancementCalculatorComponent extends Component {
     }
 
     // triple BASE COST if persistent bonus
-    if (this.state.persistentBonus) {
+    if (this.state.persistentBonus && this.state.stickerType !== "summonPlus1") {
       cost *= 3;
     }
 
