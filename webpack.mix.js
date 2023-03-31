@@ -11,12 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('src/js/calculatorLoader.js', 'js/calculator.js').react();
+mix.setPublicPath('./public');
 
-mix.sass('src/scss/calculator.scss', 'css');
+mix.js('src/js/calculatorLoader.js', 'public/js/calculator.js').react();
 
-mix.webpackConfig({
-    output: {
-        path: `${__dirname}/public/`
-    }
-});
+mix.sass('src/scss/calculator.scss', 'public/css');
