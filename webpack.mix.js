@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('src/js/calculatorLoader.js', 'js/calculator.js');
+mix.js('src/js/calculatorLoader.js', 'js/calculator.js').react();
 
 mix.sass('src/scss/calculator.scss', 'css');
 
