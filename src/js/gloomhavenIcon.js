@@ -90,7 +90,7 @@ class GloomhavenIconComponent extends Component {
 
   render() {
     return (
-      <img src={"./images/" + this.findIcon()} width={this.props.width} alt={this.props.icon} height={this.props.height} className="gloomhaven-icon-img" />
+      <img src={"./" + this.findIcon()} width={this.props.width} alt={this.props.icon} height={this.props.height} className="gloomhaven-icon-img" />
     );
   }
 }
