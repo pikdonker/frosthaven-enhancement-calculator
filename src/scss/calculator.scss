@@ -1,0 +1,68 @@
+.enhancement-container {
+	hr {
+		margin-top: 10px;
+		margin-bottom: 0px;
+		border-color: rgb(204, 204, 204);
+		border-width: 2px;
+		border-style: dashed;
+	}
+
+	.enhancement-col {
+		margin-top: 10px;
+		padding-right: 0px;
+	}
+
+	.instruction-label {
+		margin-top: 10px;
+		font-weight: bold;
+	}
+
+	.cost-row {
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+
+	.instruction-bottom {
+		margin-bottom: 10px;
+	}
+
+	.btn-custom {
+		color: black;
+		opacity: 0.8;
+		border-width: 1px;
+		font-weight: bold;
+	}
+
+	.btn-custom:hover {
+		color: white;
+		opacity: 0.9;
+	}
+
+	.btn-custom:focus {
+		color: white;
+		opacity: 1.0;
+	}
+
+	.btn-selected-light {
+		@extend .btn-custom;
+		background-color: #adadad;
+		border-color: #adadad;
+	}
+
+	.btn-disabled {
+		@extend .btn-custom;
+		opacity: 0.2;
+	}
+
+	.btn-disabled:hover {
+		opacity: 0.2;
+	}
+
+	.btn-disabled:focus {
+		opacity: 0.2;
+	}
+
+	.badge-xxlarge {
+		font-size: xx-large;
+	}
+}
