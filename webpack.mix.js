@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,3 +19,9 @@ mix.js('src/js/calculatorLoader.js', 'public/js/calculator.js').react();
 mix.sass('src/scss/calculator.scss', 'public/css');
 
 mix.version();
+
+mix.options({
+    terser: {
+        extractComments: false,
+    }
+});
