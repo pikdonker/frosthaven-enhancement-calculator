@@ -324,8 +324,8 @@ class EnhancementCalculatorComponent extends Component {
         else if (stickerType === "otherEffect") {
           icons = (
             <span>
-              <GloomhavenIcon icon="elementFire" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="generalJump" width={iconWidth} />&nbsp;
+              <GloomhavenIcon icon="elementFire" width={iconWidth} /> 
+              <GloomhavenIcon icon="generalJump" width={iconWidth} /> 
               <GloomhavenIcon icon="statusEffectMuddle" width={iconWidth} />
             </span>
           )
@@ -362,12 +362,12 @@ class EnhancementCalculatorComponent extends Component {
         if (baseOtherEffect === "specificElement") {
           icons = (
             <span>
-              <GloomhavenIcon icon="elementAir" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="elementLight" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="elementIce" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="elementDark" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="elementFire" width={iconWidth} />&nbsp;
-              <GloomhavenIcon icon="elementEarth" width={iconWidth} />&nbsp;
+              <GloomhavenIcon icon="elementAir" width={iconWidth} /> 
+              <GloomhavenIcon icon="elementLight" width={iconWidth} /> 
+              <GloomhavenIcon icon="elementIce" width={iconWidth} /> 
+              <GloomhavenIcon icon="elementDark" width={iconWidth} /> 
+              <GloomhavenIcon icon="elementFire" width={iconWidth} /> 
+              <GloomhavenIcon icon="elementEarth" width={iconWidth} /> 
             </span>
           )
         }
@@ -418,7 +418,7 @@ class EnhancementCalculatorComponent extends Component {
               <blockquote>
                 <p>Adapted from: <a href="https://ninjawithkillmoon.github.io/utilities/enhancementCalculator">The Arcane Library - Enhancement Calculator</a>. <a href="https://github.com/pikdonker/frosthaven-enhancement-calculator">Source</a></p>
                 <p>Each type of enhancement has a base cost. The cost might then be modified based on which ability is being enhanced.</p>
-                <p>Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> + 1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> + 1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> + 1" enhancements (30 gold).</p>
+                <p>Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> +1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold).</p>
               </blockquote>
             </Col>
           </Row>
@@ -492,10 +492,10 @@ class EnhancementCalculatorComponent extends Component {
           {this.showOtherOptions() && this.doubleMultipleTargets() &&
             <div>
               <hr />
-              {this.makeBadgeRow("Ability has Multple Targets/Summons/Tokens")}
+              {this.makeBadgeRow("Ability has Multiple Targets/Summons/Tokens")}
               <Row>
                 <Col className="enhancement-col" xs={12} md={12}>
-                  <Button variant="outline-secondary" disabled={!this.doubleMultipleTargets()} block onClick={() => this.multipleTargetClick()} className={this.state.multipleTargets && "active"}>{this.state.multipleTargets ? "Yes" : "No"} (Double base cost)</Button>
+                  <Button variant="outline-secondary" disabled={!this.doubleMultipleTargets()} block onClick={() => this.multipleTargetClick()} className={this.state.multipleTargets && "active"}>{this.state.multipleTargets ? "Yes (Double base cost)" : "No"}</Button>
                 </Col>
               </Row>
             </div>
@@ -511,7 +511,7 @@ class EnhancementCalculatorComponent extends Component {
               </Row>
               <Row>
                 <Col className="enhancement-col" xs={12} md={12}>
-                  <Button variant="outline-secondary" block onClick={() => this.lostCardClick()} className={this.state.lostCard && "active"}>{this.state.lostCard ? "Yes" : "No"} (Halve base cost)</Button>
+                  <Button variant="outline-secondary" block onClick={() => this.lostCardClick()} className={this.state.lostCard && "active"}>{this.state.lostCard ? "Yes (Halve base cost)" : "No"}</Button>
                 </Col>
               </Row>
             </div>
@@ -527,7 +527,7 @@ class EnhancementCalculatorComponent extends Component {
               </Row>
               <Row>
                 <Col className="enhancement-col" xs={12} md={12}>
-                  <Button variant="outline-secondary" block onClick={() => this.persistentBonusClick()} className={this.state.persistentBonus && "active"}>{this.state.persistentBonus ? "Yes" : "No"} (Triple base cost)</Button>
+                  <Button variant="outline-secondary" block onClick={() => this.persistentBonusClick()} className={this.state.persistentBonus && "active"}>{this.state.persistentBonus ? "Yes (Triple base cost)" : "No"}</Button>
                 </Col>
               </Row>
             </div>
