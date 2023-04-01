@@ -13,6 +13,7 @@ const path = require('path');
  */
 
 mix.setPublicPath('./public');
+mix.setResourceRoot('./');
 
 mix.js('src/js/calculatorLoader.js', 'public/js/calculator.js').react();
 
