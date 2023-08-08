@@ -14,8 +14,8 @@ const playerPlusOneAbilityLines = {
   pierce: { cost: 30, title: "Pierce", icon: "statusEffectPierce" },
   heal: { cost: 30, title: "Heal", icon: "generalHeal" },
   push: { cost: 30, title: "Push", icon: "statusEffectPush" },
-  pull: { cost: 30, title: "Pull", icon: "statusEffectPull" },
-  teleport: { cost: 30, title: "Teleport", icon: "generalTeleport" },
+  pull: { cost: 20, title: "Pull", icon: "statusEffectPull" },
+  teleport: { cost: 50, title: "Teleport", icon: "generalTeleport" },
 };
 
 const summonPlusOneAbilityLines = {
@@ -27,7 +27,7 @@ const summonPlusOneAbilityLines = {
 
 const baseOtherEffects = {
   regenerate: { cost: 40, title: "Regenerate", icon: "statusEffectRegenerate" },
-  ward: { cost: 40, title: "Ward", icon: "statusEffectWard" },
+  ward: { cost: 75, title: "Ward", icon: "statusEffectWard" },
   strengthen: { cost: 100, title: "Strengthen", icon: "statusEffectStrengthen" },
   bless: { cost: 75, title: "Bless", icon: "statusEffectBless" },
   wound: { cost: 75, title: "Wound", icon: "statusEffectWound" },
@@ -36,7 +36,7 @@ const baseOtherEffects = {
   muddle: { cost: 40, title: "Muddle", icon: "statusEffectMuddle" },
   curse: { cost: 150, title: "Curse", icon: "statusEffectCurse" },
   specificElement: { cost: 100, title: "Specific Element", icon: "elementFire" },
-  anyElement: { cost: 150, title: "Any Element", icon: "elementAll" },
+  wildElement: { cost: 150, title: "Wild Element", icon: "elementAll" },
   jump: { cost: 60, title: "Jump", icon: "generalJump" },
 };
 
@@ -78,7 +78,7 @@ class EnhancementCalculatorComponent extends Component {
       return false;
     }
 
-    if (this.state.baseOtherEffect === 'anyElement') {
+    if (this.state.baseOtherEffect === 'wildElement') {
       return false;
     }
 
@@ -111,7 +111,7 @@ class EnhancementCalculatorComponent extends Component {
       }
     }
     else if (this.state.stickerType === "attackHex") {
-      cost += Math.floor( 200 / this.state.numberOfCurrentlyTargetedHexes );
+      cost += Math.ceil( 200 / this.state.numberOfCurrentlyTargetedHexes );
     }
     else if (this.state.stickerType === "otherEffect") {
       if (this.state.baseOtherEffect) {
@@ -287,7 +287,7 @@ class EnhancementCalculatorComponent extends Component {
       numberOfHexesColumns.push(
         <Col className="enhancement-col" key={i} xs={4} md={3}>
           <Button variant="outline-secondary" block onClick={() => this.numberOfHexesClick(i)} className={this.state.numberOfCurrentlyTargetedHexes === i && "active"}>
-            {i} <GloomhavenIcon icon="generalAttackHex" width={iconWidth} /> ({Math.floor( 200 / i )}g)
+            {i} <GloomhavenIcon icon="generalAttackHex" width={iconWidth} /> ({Math.ceil( 200 / i )}g)
           </Button>
         </Col>
       );
@@ -350,7 +350,7 @@ class EnhancementCalculatorComponent extends Component {
         
         let xs = 6;
         let md = 3;
-        if (baseOtherEffect === "specificElement" || baseOtherEffect === "anyElement" || baseOtherEffect === "jump") {
+        if (baseOtherEffect === "specificElement" || baseOtherEffect === "wildElement" || baseOtherEffect === "jump") {
           xs = 12;
         }
 
@@ -506,7 +506,7 @@ class EnhancementCalculatorComponent extends Component {
               <hr />
               <Row>
                 <Col xs={12} md={12} className="text-center instruction-label">
-                  Ability has a Lost <GloomhavenIcon icon="generalLost" width={iconWidth} />, but no Persistent <GloomhavenIcon icon="generalPersistent" width={iconWidth} /> Icon
+                  Ability has a Lost <GloomhavenIcon icon="generalLost" width={iconWidth} /> Icon, but no Persistent <GloomhavenIcon icon="generalPersistent" width={iconWidth} /> Icon
                 </Col>
               </Row>
               <Row>
