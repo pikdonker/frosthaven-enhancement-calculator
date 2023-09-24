@@ -446,7 +446,7 @@ class EnhancementCalculatorComponent extends Component {
               </blockquote>
             </Col>
           </Row>
-          <Row className="hidden-xs">
+          <Row className="hidden-xs row">
           <Col xs={12} md={12}>
             <select value={this.state.EnhancementLvl}>
               <option value="1" >Building Lvl 1</option>
