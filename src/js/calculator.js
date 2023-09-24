@@ -56,6 +56,7 @@ class EnhancementCalculatorComponent extends Component {
     super();
 
     this.state = {
+      EnhancementLvl: 1,
       stickerType: "", // +1 / summon +1 / attack hex / else
       playerPlusOneAbility: "",
       baseOtherEffect: "",
@@ -127,6 +128,11 @@ class EnhancementCalculatorComponent extends Component {
       return 0;
     }
 
+    // If enchancement building is build to this lvl
+    if(EnhancementLvl >= 2 && cost > 0)
+    {
+      cost -= 10
+    }
     // double BASE COST if multiple targets (does not apply for attack hex)
     if (this.state.multipleTargets && this.doubleMultipleTargets()) {
       cost *= 2;
@@ -143,10 +149,28 @@ class EnhancementCalculatorComponent extends Component {
     }
 
     // extra cost for level of ability card
-    cost += levelCost[this.state.levelOfAbilityCard - 1];
+    // If enchancement building is build to this lvl
+    var LevelOfCardMod = levelCost[this.state.levelOfAbilityCard - 1];
+    if(EnhancementLvl >= 3 && cost > 0)
+    {
+      cost += ((this.state.levelOfAbilityCard * 10) - LevelOfCardMod);
+    }
+    else
+    {
+      cost += LevelOfCardMod;
+    }
+
 
     // extra cost for previous enhancements to the same action
-    cost += previousEnhancementCost[this.state.numberOfPreviousEnhancements];
+    // If enchancement building is build to this lvl
+    var PrevOfCardMod = previousEnhancementCost[this.state.numberOfPreviousEnhancements];
+    if(EnhancementLvl >= 4 && cost > 0)
+    {
+      cost += ((this.state.numberOfPreviousEnhancements * 25) - PrevOfCardMod);
+    }
+    else{
+      cost += PrevOfCardMod;
+    }
 
     return cost;
   }
@@ -418,8 +442,14 @@ class EnhancementCalculatorComponent extends Component {
               <blockquote>
                 <p>Adapted from: <a href="https://ninjawithkillmoon.github.io/utilities/enhancementCalculator">The Arcane Library - Enhancement Calculator</a>. <a href="https://github.com/pikdonker/frosthaven-enhancement-calculator">Source</a></p>
                 <p>Each type of enhancement has a base cost. The cost might then be modified based on which ability is being enhanced.</p>
-                <p>Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> +1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold).</p>
+                <p>asf Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> +1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold).</p>
               </blockquote>
+              <select value={this.state.EnhancementLvl}>
+                <option value="1" >Building Lvl 1</option>
+                <option value="2" >Building Lvl 2</option>
+                <option value="3" >Building Lvl 3</option>
+                <option value="4" >Building Lvl 4</option>
+              </select>
             </Col>
           </Row>
 
