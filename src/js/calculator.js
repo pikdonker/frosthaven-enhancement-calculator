@@ -447,12 +447,14 @@ class EnhancementCalculatorComponent extends Component {
             </Col>
           </Row>
           <Row className="hidden-xs">
+          <Col xs={12} md={12}>
             <select value={this.state.EnhancementLvl}>
               <option value="1" >Building Lvl 1</option>
               <option value="2" >Building Lvl 2</option>
               <option value="3" >Building Lvl 3</option>
               <option value="4" >Building Lvl 4</option>
             </select>
+            </Col>
           </Row>
           {this.makeBadgeRow("Enhancement Type")}
 
