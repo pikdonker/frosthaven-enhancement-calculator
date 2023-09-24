@@ -444,18 +444,15 @@ class EnhancementCalculatorComponent extends Component {
                 <p>Each type of enhancement has a base cost. The cost might then be modified based on which ability is being enhanced.</p>
                 <p>asdf Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> +1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold).</p>
               </blockquote>
+              <select value={this.state.EnhancementLvl}>
+                <option value="1" >Building Lvl 1</option>
+                <option value="2" >Building Lvl 2</option>
+                <option value="3" >Building Lvl 3</option>
+                <option value="4" >Building Lvl 4</option>
+              </select>
             </Col>
           </Row>
-          <Row className="hidden-xs row">
-          <Col xs={12} md={12}>
-            <select value={this.state.EnhancementLvl}>
-              <option value="1" >Building Lvl 1</option>
-              <option value="2" >Building Lvl 2</option>
-              <option value="3" >Building Lvl 3</option>
-              <option value="4" >Building Lvl 4</option>
-            </select>
-            </Col>
-          </Row>
+
           {this.makeBadgeRow("Enhancement Type")}
 
           <Row>
