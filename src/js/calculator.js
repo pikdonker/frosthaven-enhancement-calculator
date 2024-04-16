@@ -330,7 +330,7 @@ class EnhancementCalculatorComponent extends Component {
     for (let i=1; i<=4; i++) {
       enhancementBuilderLevelColumns.push(
         <Col className="enhancement-col" key={i} xs={6} md={3}>
-          <Button variant="outline-secondary" block onClick={() => this.previousEnhancementClick(i)} className={this.state.levelOfEnhancerBuilding === i && "active"}>
+          <Button variant="outline-secondary" block onClick={() => this.enhancerBuildingClick(i)} className={this.state.levelOfEnhancerBuilding === i && "active"}>
             {i}
           </Button>
         </Col>
