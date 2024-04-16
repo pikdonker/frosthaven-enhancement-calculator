@@ -47,8 +47,8 @@ const stickerTypes = {
   otherEffect: { title: "Other Effect" },
 };
 
-const levelCost = [0, 25, 50, 75, 100, 125, 150, 175, 200];
-const previousEnhancementCost = [0, 75, 150, 225, 300];
+const baseLevelCost = [0, 25, 50, 75, 100, 125, 150, 175, 200];
+const basePreviousEnhancementCost = [0, 75, 150, 225, 300];
 
 class EnhancementCalculatorComponent extends Component {
 
@@ -66,6 +66,7 @@ class EnhancementCalculatorComponent extends Component {
       multipleTargets: false,
       lostCard: false,
       persistentBonus: false,
+      levelOfEnhancerBuilding: 1,
     }
   }
 
@@ -143,10 +144,26 @@ class EnhancementCalculatorComponent extends Component {
     }
 
     // extra cost for level of ability card
-    cost += levelCost[this.state.levelOfAbilityCard - 1];
+    let levelCost = baseLevelCost[this.state.levelOfAbilityCard - 1];
+
+    if (this.state.levelOfEnhancerBuilding > 2) {
+      levelCost -= (10 * this.state.levelOfAbilityCard);
+    }
+
+    cost += levelCost;
 
     // extra cost for previous enhancements to the same action
-    cost += previousEnhancementCost[this.state.numberOfPreviousEnhancements];
+    let previousEnhancementCost = basePreviousEnhancementCost[this.state.numberOfPreviousEnhancements];
+    
+    if (this.state.levelOfEnhancerBuilding > 3) {
+      previousEnhancementCost -= (25 * this.state.numberOfPreviousEnhancements);
+    }
+
+    cost += previousEnhancementCost;
+
+    if (this.state.levelOfEnhancerBuilding > 1) {
+      cost -= 10;
+    }
 
     return cost;
   }
@@ -206,6 +223,12 @@ class EnhancementCalculatorComponent extends Component {
   levelClick(level) {
     this.setState({
       levelOfAbilityCard: level
+    });
+  }
+
+  enhancerBuildingClick(level) {
+    this.setState({
+      levelOfEnhancerBuilding: level
     });
   }
 
@@ -282,6 +305,7 @@ class EnhancementCalculatorComponent extends Component {
     let abilityCardLevelColumns = [];
     let previousEnhancementsColumns = [];
     let numberOfHexesColumns = [];
+    let enhancementBuilderLevelColumns = [];
 
     for (let i=2; i<=13; i++) {
       numberOfHexesColumns.push(
@@ -297,7 +321,17 @@ class EnhancementCalculatorComponent extends Component {
       previousEnhancementsColumns.push(
         <Col className="enhancement-col" key={i} xs={6} md={3}>
           <Button variant="outline-secondary" block onClick={() => this.previousEnhancementClick(i)} className={this.state.numberOfPreviousEnhancements === i && "active"}>
-            {i} (+{previousEnhancementCost[i]}g)
+            {i} (+{basePreviousEnhancementCost[i]}g)
+          </Button>
+        </Col>
+      );
+    }
+
+    for (let i=1; i<=4; i++) {
+      enhancementBuilderLevelColumns.push(
+        <Col className="enhancement-col" key={i} xs={6} md={3}>
+          <Button variant="outline-secondary" block onClick={() => this.previousEnhancementClick(i)} className={this.state.levelOfEnhancerBuilding === i && "active"}>
+            {i}
           </Button>
         </Col>
       );
@@ -307,7 +341,7 @@ class EnhancementCalculatorComponent extends Component {
       abilityCardLevelColumns.push(
         <Col className="enhancement-col" key={i} xs={4} md={2} lg={1} xl={true}>
           <Button variant="outline-secondary" block onClick={() => this.levelClick(i)} className={this.state.levelOfAbilityCard === i && "active"}>
-            {i} (+{levelCost[i-1]}g)
+            {i} (+{baseLevelCost[i-1]}g)
           </Button>
         </Col>
       );
@@ -529,6 +563,16 @@ class EnhancementCalculatorComponent extends Component {
                 <Col className="enhancement-col" xs={12} md={12}>
                   <Button variant="outline-secondary" block onClick={() => this.persistentBonusClick()} className={this.state.persistentBonus && "active"}>{this.state.persistentBonus ? "Yes (Triple base cost)" : "No"}</Button>
                 </Col>
+              </Row>
+            </div>
+          }
+
+          {this.showOtherOptions() &&
+            <div>
+              <hr />
+              {this.makeBadgeRow("Level of Enhancer Building")}
+              <Row>
+                {enhancementBuilderLevelColumns}
               </Row>
             </div>
           }
