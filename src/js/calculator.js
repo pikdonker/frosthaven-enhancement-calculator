@@ -147,7 +147,7 @@ class EnhancementCalculatorComponent extends Component {
     let levelCost = baseLevelCost[this.state.levelOfAbilityCard - 1];
 
     if (this.state.levelOfEnhancerBuilding > 2) {
-      levelCost -= (10 * this.state.levelOfAbilityCard);
+      levelCost -= 10 * (this.state.levelOfAbilityCard - 1);
     }
 
     cost += levelCost;
