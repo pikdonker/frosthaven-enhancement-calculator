@@ -454,6 +454,11 @@ class EnhancementCalculatorComponent extends Component {
                 <p>Each type of enhancement has a base cost. The cost might then be modified based on which ability is being enhanced.</p>
                 <p>Some enhancements do not fall neatly into the categories on the cost chart. When determining their base cost, treat damage traps as "<img alt="Attack Icon" src="./images/fh-attack-bw-icon.png" width={"12px"} /> +1" enhancements (50 gold), treat healing traps as "<img alt="Heal Icon" src="./images/fh-heal-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold), and treat the movement of tokens and tiles as "<img alt="Move Icon" src="./images/fh-move-bw-icon.png" width={"12px"} /> +1" enhancements (30 gold).</p>
               </blockquote>
+              <blockquote>
+                <p>From the <a href="https://boardgamegeek.com/thread/3001013/official-faq-for-frosthaven-no-rules-questions-ple">Frosthaven FAQ</a>:</p>
+                <p><strong>Is there a limit on the number of enhancements a character can have?</strong> No, there's no limit. This is a change from Gloomhaven.</p>
+                <p><strong>If I am enhancing an ability that can only affect multiple targets when an element is consumed or some other condition is met, does it cost double to enhance?</strong> Yes. If an ability has conditional multi-targets, it still costs double. This is a change from Gloomhaven.</p>                
+              </blockquote>
             </Col>
           </Row>
 
