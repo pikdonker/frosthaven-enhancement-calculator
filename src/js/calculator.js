@@ -454,7 +454,7 @@ class EnhancementCalculatorComponent extends Component {
                 <p>Each type of enhancement has a base cost. The cost might then be modified based on which ability is being enhanced.</p>
                 <p>Enhancement dot meanings:
                   <ul>
-                    <li><b>Square:</b> Can only receive a +1 sticker</li>
+                    <li><b>Square:</b> Can only receive a +1 sticker, or jump for non-summon move</li>
                     <li><b>Circle:</b> As <b>Square</b>, plus any element sticker.</li>
                     <li><b>Diamond:</b> As <b>Circle</b>, plus any negative condition sticker.</li>
                     <li><b>Diamond+:</b> As <b>Circle</b>, plus any positive condition sticker.</li>
